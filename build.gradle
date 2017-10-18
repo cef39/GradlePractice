@@ -1,0 +1,28 @@
+apply plugin: 'java'
+apply plugin: 'application'
+mainClassName = "christian.Fibonacci"
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	testCompile 'junit:junit:4.12'
+}
+
+run {
+	systemProperties System.getProperties()
+	args System.getProperty("args").split()
+}
+
+task plumbus << {
+	println "A plumbus for you!"
+}
+
+task schleem(dependsOn: plumbus) << {
+	println "schleem has been repurposed"
+}
+
+task grumbo(dependsOn: schleem) << {
+	println "that leaves you with a regular old plumbus"
+}
+
